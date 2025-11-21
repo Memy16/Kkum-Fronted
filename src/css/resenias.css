@@ -1,0 +1,96 @@
+.reseñas-container {
+    padding: 2rem;
+    min-height: 100vh;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.reseñas-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    background: linear-gradient(135deg, var(--fucsia), var(--naranja));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(255, 0, 200, 0.5);
+}
+
+.reseña-card {
+    background: linear-gradient(135deg, var(--card-bg), rgba(30, 30, 30, 0.8));
+    border: 1px solid rgba(255, 0, 200, 0.3);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.reseña-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 0 15px rgba(255, 0, 200, 0.4);
+    border-color: var(--fucsia);
+}
+
+.reseña-card h3 {
+    color: var(--verde-agua);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.reseña-card p {
+    color: rgba(230, 230, 230, 0.9);
+    line-height: 1.5;
+}
+
+.reseña-form {
+    margin: 2rem 0;
+}
+
+.reseña-form textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(160, 32, 240, 0.3);
+    border-radius: 10px;
+    color: var(--texto);
+    font-family: 'Orbitron', sans-serif;
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+.reseña-form textarea:focus {
+    outline: none;
+    border-color: var(--violeta);
+    box-shadow: 0 0 15px rgba(160, 32, 240, 0.6);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.reseña-form textarea::placeholder {
+    color: rgba(230, 230, 230, 0.5);
+}
+
+.btn-enviar-reseña {
+    background: linear-gradient(135deg, var(--violeta), var(--fucsia));
+    color: var(--texto);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(160, 32, 240, 0.4);
+}
+
+.btn-enviar-reseña:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(160, 32, 240, 0.8);
+    letter-spacing: 2px;
+}
