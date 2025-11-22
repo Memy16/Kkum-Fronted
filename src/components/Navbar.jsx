@@ -4,6 +4,8 @@ import "../css/style.css";
 
 export default function Navbar() {
     const [menuAbierto, setMenuAbierto] = useState(false);
+    const USER_ID = localStorage.getItem("USER_ID");
+    const USER_PHOTO = localStorage.getItem("USER_PHOTO");
 
     const toggleMenu = () => {
         setMenuAbierto(!menuAbierto);
@@ -23,8 +25,13 @@ export default function Navbar() {
                     <Link to="/coleccion">Mi Colección</Link>
                     <Link to="/completados">Completados</Link>
                     <Link to="/resenias">Reseñas</Link>
-                    <Link to="/login">Login</Link>
+                    {!USER_ID && <Link to="/login">Login</Link>}
                 </div>
+                {USER_ID && USER_PHOTO && (
+                    <Link to="/login" aria-label="Perfil" className="user-avatar-link">
+                        <img src={USER_PHOTO} alt="Usuario" className="user-avatar" />
+                    </Link>
+                )}
                 
                 <button
                     className={`menu-hamburguesa ${menuAbierto ? 'active' : ''}`}
@@ -46,7 +53,7 @@ export default function Navbar() {
                 <Link to="/coleccion" onClick={cerrarMenu}>Mi Colección</Link>
                 <Link to="/completados" onClick={cerrarMenu}>Completados</Link>
                 <Link to="/resenias" onClick={cerrarMenu}>Reseñas</Link>
-                <Link to="/login" onClick={cerrarMenu}>Login</Link>
+                {!USER_ID && <Link to="/login" onClick={cerrarMenu}>Login</Link>}
             </div>
         </>
     );

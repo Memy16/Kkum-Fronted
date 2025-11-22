@@ -9,7 +9,7 @@ export default function Reseñas() {
         comentario: ""
     });
     const [loading, setLoading] = useState(true);
-    const USER_ID = "usuario-demo-123";
+    const USER_ID = localStorage.getItem("USER_ID");
     
     const [juegos, setJuegos] = useState([]);
     useEffect(() => {
@@ -143,7 +143,7 @@ export default function Reseñas() {
                     reseñas.map(reseña => (
                         <div key={reseña._id} className="reseña-card">
                             <h4>{reseña.gameId?.titulo || "Juego"}</h4>
-                            <p className="reseña-usuario">Por: {reseña.userId?.email || "Usuario"}</p>
+                            <p className="reseña-usuario">Por: {reseña.userId?.nombre || reseña.userId?.email || "Usuario"}</p>
                             <p className="reseña-fecha">
                                 {new Date(reseña.fecha).toLocaleDateString()}
                             </p>

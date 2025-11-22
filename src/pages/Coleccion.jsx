@@ -6,7 +6,7 @@ export default function Coleccion() {
 
     const [coleccion, setColeccion] = useState([]);
     const [loading, setLoading] = useState(true);
-    const USER_ID = "usuario-demo-123";
+    const USER_ID = localStorage.getItem("USER_ID");
 
     useEffect(() => {
         const fetchColeccion = async () => {

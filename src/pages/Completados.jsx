@@ -4,7 +4,7 @@ import "../css/completados.css";
 export default function Completados() {
     const [completados, setCompletados] = useState([]);
     const [loading, setLoading] = useState(true);
-    const USER_ID = "usuario-demo-123";
+    const USER_ID = localStorage.getItem("USER_ID");
     
     useEffect(() => {
         const fetchCompletados = async () => {

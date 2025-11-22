@@ -8,7 +8,7 @@ export default function Biblioteca() {
     const [juegos, setJuegos] = useState([]);
     const [juegoSeleccionado, setJuegoSeleccionado] = useState(null);
     const [loading, setLoading] = useState(true);
-    const USER_ID = "usuario-demo-123";
+    const USER_ID = localStorage.getItem("USER_ID");
 
     useEffect(() => {
         const fetchJuegos = async () => {
@@ -25,7 +25,7 @@ export default function Biblioteca() {
 
         fetchJuegos();
     }, []);
-
+    
     const handleCardClick = (juego) => {
         setJuegoSeleccionado(juego);
     };
