@@ -8,7 +8,7 @@ export default function Biblioteca() {
     const [juegoSeleccionado, setJuegoSeleccionado] = useState(null);
     const [loading, setLoading] = useState(true);
     const USER_ID = "usuario-demo-123";
-    
+
     useEffect(() => {
         const fetchJuegos = async () => {
             try {
@@ -21,18 +21,18 @@ export default function Biblioteca() {
                 setLoading(false);
             }
         };
-        
+
         fetchJuegos();
     }, []);
-    
+
     const handleCardClick = (juego) => {
         setJuegoSeleccionado(juego);
     };
-    
+
     const handleCloseModal = () => {
         setJuegoSeleccionado(null);
     };
-    
+
     const handleAddToCollection = async (gameId) => {
         try {
             const response = await fetch('http://localhost:5000/api/collection', {
@@ -47,7 +47,7 @@ export default function Biblioteca() {
             });
 
             const result = await response.json();
-            
+
             if (response.ok) {
                 alert('✅ ¡Juego añadido a tu colección!');
                 handleCloseModal();
@@ -60,20 +60,43 @@ export default function Biblioteca() {
         }
     };
 
-    const handleCompletado = () => {
+    // 🆕 AGREGAR ESTA FUNCIÓN en Biblioteca.jsx
+    const handleCompletado = async () => {
         if (juegoSeleccionado) {
-            alert(`¡${juegoSeleccionado.titulo} marcado como completado!`);
-            handleCloseModal();
+            try {
+                const response = await fetch('http://localhost:5000/api/completed', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        userId: USER_ID,
+                        gameId: juegoSeleccionado._id,
+                        horasTotales: 0, // Puedes cambiar esto
+                        puntuacionPersonal: 5 // O pedir al usuario
+                    })
+                });
+
+                if (response.ok) {
+                    alert(`✅ ¡${juegoSeleccionado.titulo} marcado como completado!`);
+                    handleCloseModal();
+                } else {
+                    alert('❌ Error al marcar como completado');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('❌ Error de conexión');
+            }
         }
     };
-    
+
     const handleReseña = () => {
         if (juegoSeleccionado) {
             alert(`Redirigiendo a reseñas de ${juegoSeleccionado.titulo}`);
             handleCloseModal();
         }
     };
-    
+
     if (loading) {
         return (
             <div className="biblioteca-container">
@@ -82,15 +105,15 @@ export default function Biblioteca() {
             </div>
         );
     }
-    
+
     return (
         <div className="biblioteca-container">
             <h1 className="neon-title">Biblioteca de Juegos</h1>
-            
+
             <div className="grid-juegos">
-                {juegos.map(juego => (    
-                    <div 
-                        key={juego._id} 
+                {juegos.map(juego => (
+                    <div
+                        key={juego._id}
                         onClick={() => handleCardClick(juego)}
                         style={{ cursor: 'pointer' }}
                     >
@@ -98,9 +121,9 @@ export default function Biblioteca() {
                     </div>
                 ))}
             </div>
-            
+
             {juegoSeleccionado && (
-                <ModalJuego 
+                <ModalJuego
                     juego={juegoSeleccionado}
                     onClose={handleCloseModal}
                     onCompletado={handleCompletado}

@@ -65,3 +65,67 @@
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
+.contador {
+    text-align: center;
+    color: var(--verde-agua);
+    margin-bottom: 2rem;
+}
+
+.completados-vacio {
+    text-align: center;
+    padding: 3rem;
+    color: rgba(230, 230, 230, 0.7);
+    font-size: 1.1rem;
+}
+
+.completados-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.completados-info h3 {
+    color: var(--verde-agua);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.completados-fecha {
+    color: rgba(230, 230, 230, 0.7);
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.completados-horas {
+    color: var(--naranja);
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.completados-puntuacion {
+    color: gold;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--verde-agua);
+}
+
+.completados-item::after {
+    content: '✓ COMPLETADO';
+    position: absolute;
+    top: 50%;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    background: var(--verde-agua);
+    color: var(--fondo);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
