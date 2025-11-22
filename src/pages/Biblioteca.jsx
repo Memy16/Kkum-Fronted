@@ -71,8 +71,8 @@ export default function Biblioteca() {
                     body: JSON.stringify({
                         userId: USER_ID,
                         gameId: juegoSeleccionado._id,
-                        horasTotales: 0, // Puedes cambiar esto
-                        puntuacionPersonal: 5 // O pedir al usuario
+                        horasTotales: 0, 
+                        puntuacionPersonal: 5 
                     })
                 });
 
