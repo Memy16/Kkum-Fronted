@@ -64,9 +64,7 @@ export default function ModalJuego({ juego, onClose, onCompletado, onReseña, on
                             
                             <button 
                                 className="btn btn-reseña"
-                                onClick={() => {
-                                    window.location.href = "/resenias";
-                                }}
+                                onClick={onReseña}
                             >
                                 <span className="btn-icon">★</span>
                                 Escribir Reseña

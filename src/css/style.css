@@ -65,6 +65,42 @@ body {
     letter-spacing: 1px;
 }
 
+/* SweetAlert2 overrides */
+.swal2-popup {
+    background: var(--card-bg);
+    color: var(--texto);
+    border: 1px solid rgba(160, 32, 240, 0.3);
+    border-radius: 12px;
+    box-shadow: var(--borde-neon);
+    font-family: 'Orbitron', sans-serif;
+}
+.swal2-title {
+    color: var(--verde-agua);
+}
+.swal2-styled {
+    font-family: 'Orbitron', sans-serif;
+    border-radius: 8px;
+}
+.swal2-styled.swal2-confirm {
+    background: linear-gradient(135deg, var(--verde-agua), var(--violeta));
+    color: #0a0a0a;
+    box-shadow: var(--sombra-neon);
+}
+.swal2-styled.swal2-cancel {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+}
+.swal2-icon.swal2-success,
+.swal2-icon.swal2-info,
+.swal2-icon.swal2-warning,
+.swal2-icon.swal2-error {
+    box-shadow: var(--sombra-neon);
+}
+.swal2-container {
+    z-index: 20001 !important;
+}
+
 .nav-links a:hover {
     color: var(--verde-agua);
     background: rgba(160, 32, 240, 0.1);

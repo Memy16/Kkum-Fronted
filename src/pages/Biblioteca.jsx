@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Swal from 'sweetalert2';
 import TarjetaJuego from "../components/TarjetaJuego";
 import ModalJuego from "../components/ModalJuego";
 import "../css/biblioteca.css";
@@ -49,14 +50,45 @@ export default function Biblioteca() {
             const result = await response.json();
 
             if (response.ok) {
-                alert('✅ ¡Juego añadido a tu colección!');
+                await Swal.fire({
+                    icon: 'success',
+                    title: '¡Juego añadido! ',
+                    text: 'Se añadió a tu colección',
+                    confirmButtonText: 'Aceptar'
+                });
                 handleCloseModal();
             } else {
-                alert('❌ Error: ' + result.error);
+                const msg = (result && (result.error || result.message)) ? (result.error || result.message) : '';
+                const duplicate = (
+                    response.status === 409 ||
+                    /exist|existe|ya\s*est[aá]/i.test(msg) ||
+                    /e11000|duplicate\s*key|unique\s*constraint|duplicado/i.test(String(msg).toLowerCase())
+                );
+                if (duplicate) {
+                    await Swal.fire({
+                        icon: 'info',
+                        title: 'Este juego ya está en tu colección',
+                        text: juegoSeleccionado?.titulo ? `${juegoSeleccionado.titulo} ya estaba agregado` : '',
+                        confirmButtonText: 'Aceptar'
+                    });
+                    handleCloseModal();
+                } else {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: msg || 'Ocurrió un error',
+                        confirmButtonText: 'Aceptar'
+                    });
+                }
             }
         } catch (error) {
             console.error('Error añadiendo a colección:', error);
-            alert('❌ Error de conexión');
+            await Swal.fire({
+                icon: 'error',
+                title: 'Error de conexión',
+                text: 'No se pudo conectar con el servidor',
+                confirmButtonText: 'Aceptar'
+            });
         }
     };
     
@@ -77,22 +109,59 @@ export default function Biblioteca() {
                 });
 
                 if (response.ok) {
-                    alert(`✅ ¡${juegoSeleccionado.titulo} marcado como completado!`);
+                    await Swal.fire({
+                        icon: 'success',
+                        title: 'Juego completado',
+                        text: `${juegoSeleccionado.titulo} marcado como completado`,
+                        confirmButtonText: 'Aceptar'
+                    });
                     handleCloseModal();
                 } else {
-                    alert('❌ Error al marcar como completado');
+                    const errText = await response.text();
+                    const duplicate = (
+                        response.status === 409 ||
+                        /exist|existe|ya\s*est[aá]/i.test(errText) ||
+                        /e11000|duplicate\s*key|unique\s*constraint|duplicado/i.test(String(errText).toLowerCase())
+                    );
+                    if (duplicate) {
+                        await Swal.fire({
+                            icon: 'info',
+                            title: 'Este juego ya estaba completado',
+                            text: `${juegoSeleccionado.titulo} ya estaba marcado como completado`,
+                            confirmButtonText: 'Aceptar'
+                        });
+                        handleCloseModal();
+                    } else {
+                        await Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'No se pudo marcar como completado',
+                            confirmButtonText: 'Aceptar'
+                        });
+                    }
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('❌ Error de conexión');
+                await Swal.fire({
+                    icon: 'error',
+                    title: 'Error de conexión',
+                    text: 'No se pudo conectar con el servidor',
+                    confirmButtonText: 'Aceptar'
+                });
             }
         }
     };
 
-    const handleReseña = () => {
+    const handleReseña = async () => {
         if (juegoSeleccionado) {
-            alert(`Redirigiendo a reseñas de ${juegoSeleccionado.titulo}`);
+            await Swal.fire({
+                icon: 'info',
+                title: 'Redirigiendo',
+                text: `Reseñas de ${juegoSeleccionado.titulo}`,
+                confirmButtonText: 'Continuar'
+            });
             handleCloseModal();
+            window.location.href = '/resenias';
         }
     };
 

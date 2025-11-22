@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Swal from 'sweetalert2';
 import "../css/coleccion.css";
 
 export default function Coleccion() {
@@ -25,17 +26,36 @@ export default function Coleccion() {
 
     const handleEliminar = async (gameId) => {
         try {
+            const confirm = await Swal.fire({
+                icon: 'warning',
+                title: 'Confirmar eliminación',
+                text: '¿Quieres eliminar este juego de tu colección?',
+                showCancelButton: true,
+                confirmButtonText: 'Eliminar',
+                cancelButtonText: 'Cancelar'
+            });
+            if (!confirm.isConfirmed) return;
             const response = await fetch(`http://localhost:5000/api/collection/${USER_ID}/${gameId}`, {
                 method: 'DELETE'
             });
 
             if (response.ok) {
-                alert('🗑️ Juego eliminado de tu colección');
+                await Swal.fire({
+                    icon: 'success',
+                    title: 'Juego eliminado',
+                    text: 'Se eliminó de tu colección',
+                    confirmButtonText: 'Aceptar'
+                });
                 const updatedResponse = await fetch(`http://localhost:5000/api/collection/${USER_ID}`);
                 const updatedData = await updatedResponse.json();
                 setColeccion(updatedData);
             } else {
-                alert('❌ Error eliminando juego');
+                await Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo eliminar el juego',
+                    confirmButtonText: 'Aceptar'
+                });
             }
         } catch (error) {
             console.error('Error eliminando:', error);

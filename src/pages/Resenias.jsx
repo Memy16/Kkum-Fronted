@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Swal from 'sweetalert2';
 import "../css/resenias.css";
 
 export default function Reseñas() {
@@ -50,7 +51,12 @@ export default function Reseñas() {
     
     const handleEnviarReseña = async () => {
         if (!nuevaReseña.juegoId || !nuevaReseña.comentario.trim()) {
-            alert('❌ Por favor selecciona un juego y escribe tu reseña');
+            await Swal.fire({
+                icon: 'warning',
+                title: 'Completa la reseña',
+                text: 'Selecciona un juego y escribe tu reseña',
+                confirmButtonText: 'Aceptar'
+            });
             return;
         }
 
@@ -69,17 +75,31 @@ export default function Reseñas() {
             });
 
             if (response.ok) {
-                const nuevaReseñaData = await response.json();
+                await response.json();
                 fetchReseñasPorJuego(nuevaReseña.juegoId);
                 setNuevaReseña(prev => ({ ...prev, comentario: "" }));
-                alert('✅ ¡Reseña publicada!');
+                await Swal.fire({
+                    icon: 'success',
+                    title: '¡Reseña publicada!',
+                    confirmButtonText: 'Aceptar'
+                });
             } else {
                 const errorData = await response.json();
-                alert('❌ Error: ' + errorData.error);
+                await Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: errorData.error || 'No se pudo publicar la reseña',
+                    confirmButtonText: 'Aceptar'
+                });
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('❌ Error de conexión');
+            await Swal.fire({
+                icon: 'error',
+                title: 'Error de conexión',
+                text: 'No se pudo conectar con el servidor',
+                confirmButtonText: 'Aceptar'
+            });
         }
     };
 
