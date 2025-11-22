@@ -53,9 +53,6 @@ export default function Completados() {
                                 {item.horasTotales > 0 && (
                                     <p className="completados-horas">Horas jugadas: {item.horasTotales}h</p>
                                 )}
-                                {item.puntuacionPersonal && (
-                                    <p className="completados-puntuacion">⭐ {item.puntuacionPersonal}/5</p>
-                                )}
                             </div>
                         </div>
                     ))}

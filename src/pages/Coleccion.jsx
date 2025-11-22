@@ -31,7 +31,6 @@ export default function Coleccion() {
 
             if (response.ok) {
                 alert('🗑️ Juego eliminado de tu colección');
-                // Actualizar la lista
                 const updatedResponse = await fetch(`http://localhost:5000/api/collection/${USER_ID}`);
                 const updatedData = await updatedResponse.json();
                 setColeccion(updatedData);

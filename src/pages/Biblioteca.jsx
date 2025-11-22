@@ -59,8 +59,7 @@ export default function Biblioteca() {
             alert('❌ Error de conexión');
         }
     };
-
-    // 🆕 AGREGAR ESTA FUNCIÓN en Biblioteca.jsx
+    
     const handleCompletado = async () => {
         if (juegoSeleccionado) {
             try {

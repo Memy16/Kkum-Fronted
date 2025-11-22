@@ -102,12 +102,6 @@
     margin-bottom: 0.3rem;
 }
 
-.completados-puntuacion {
-    color: gold;
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
 .loading {
     text-align: center;
     padding: 2rem;
