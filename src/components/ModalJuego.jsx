@@ -3,7 +3,6 @@ import "../css/modal-juego.css";
 
 export default function ModalJuego({ juego, onClose, onCompletado, onReseña }) {
     
-    // Cerrar modal con ESC
     useEffect(() => {
         const handleEscape = (e) => {
             if (e.key === 'Escape') onClose();
@@ -11,8 +10,7 @@ export default function ModalJuego({ juego, onClose, onCompletado, onReseña }) 
         document.addEventListener('keydown', handleEscape);
         return () => document.removeEventListener('keydown', handleEscape);
     }, [onClose]);
-
-    // Prevenir scroll del body cuando el modal está abierto
+    
     useEffect(() => {
         document.body.style.overflow = 'hidden';
         return () => document.body.style.overflow = 'unset';
@@ -21,16 +19,13 @@ export default function ModalJuego({ juego, onClose, onCompletado, onReseña }) 
     return (
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                {/* Botón cerrar */}
                 <button className="modal-close" onClick={onClose}>×</button>
                 
                 <div className="modal-body">
-                    {/* Imagen del juego */}
                     <div className="modal-imagen">
                         <img src={juego.imagen} alt={juego.titulo} />
                     </div>
                     
-                    {/* Información del juego */}
                     <div className="modal-info">
                         <h1 className="modal-titulo">{juego.titulo}</h1>
                         
@@ -46,20 +41,11 @@ export default function ModalJuego({ juego, onClose, onCompletado, onReseña }) 
                         
                         <div className="modal-metadata">
                             <div className="metadata-item">
-                                <span className="metadata-label">Plataforma:</span>
+                                <span className="metadata-label">Dispositivo:</span>
                                 <span className="metadata-value">{juego.dispositivo}</span>
-                            </div>
-                            <div className="metadata-item">
-                                <span className="metadata-label">Estado:</span>
-                                <span className="metadata-value estado-pendiente">En progreso</span>
-                            </div>
-                            <div className="metadata-item">
-                                <span className="metadata-label">Horas jugadas:</span>
-                                <span className="metadata-value">0h</span>
                             </div>
                         </div>
                         
-                        {/* Botones de acción */}
                         <div className="modal-actions">
                             <button 
                                 className="btn btn-completado"

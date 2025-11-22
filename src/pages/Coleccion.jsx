@@ -5,7 +5,7 @@ export default function Coleccion() {
     return (
         <div className="coleccion-container">
             <h1 className="titulo-coleccion">Mi Colección</h1>
-
+            
             <div className="coleccion-grid">
                 {juegos.slice(0, 8).map(j => (
                     <div key={j.titulo} className="coleccion-card">

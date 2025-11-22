@@ -54,7 +54,7 @@ export default [{
         imagen: "https://i.3djuegos.com/juegos/15990/los_sims_4_y_las_cuatro_estaciones/fotos/ficha/los_sims_4_y_las_cuatro_estaciones-4587917.webp",
         link: "https://www.ea.com"
     },
-
+    
     {
         titulo: "Rocket League",
         descripcion: "Fútbol con autos y acrobacias impresionantes.",
@@ -127,9 +127,9 @@ export default [{
         imagen: "https://i.imgur.com/7xjUMIq.jpeg",
         link: "https://www.ea.com"
     },
-
+    
     // 30 restantes...
-
+    
     /*{
         titulo: "Monument Valley 2",
         descripcion: "Puzzle artístico con paisajes imposibles.",
