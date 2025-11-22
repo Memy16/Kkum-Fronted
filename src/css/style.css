@@ -1,4 +1,3 @@
-/* ===== ESTILOS GLOBALES ===== */
 :root {
     --violeta: #a020f0;
     --fucsia: #ff00c8;
@@ -122,9 +121,6 @@ body {
     background: var(--fucsia);
 }
 
-/* ===== NAVBAR RESPONSIVE ===== */
-
-/* Navbar Base */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -148,7 +144,6 @@ body {
     background-clip: text;
 }
 
-/* Menú normal para desktop */
 .nav-links {
     display: flex;
     gap: 2rem;
@@ -174,7 +169,6 @@ body {
     box-shadow: 0 0 10px rgba(0, 245, 212, 0.4);
 }
 
-/* Botón hamburguesa - Oculto en desktop */
 .menu-hamburguesa {
     display: none;
     flex-direction: column;
@@ -198,7 +192,6 @@ body {
     transform-origin: center;
 }
 
-/* Menú móvil - Oculto por defecto */
 .menu-mobile {
     display: none;
     position: fixed;
@@ -277,9 +270,8 @@ body {
     transform: rotate(90deg);
 }
 
-/* ===== MEDIA QUERIES ===== */
+/* Responsive */
 
-/* Tablet */
 @media (max-width: 768px) {
     .navbar {
         padding: 1rem 1.5rem;
@@ -289,17 +281,14 @@ body {
         font-size: 1.5rem;
     }
     
-    /* Ocultar menú desktop en tablet */
     .nav-links {
         display: none;
     }
     
-    /* Mostrar hamburguesa en tablet */
     .menu-hamburguesa {
         display: flex;
     }
     
-    /* Efectos del hamburguesa cuando está activo */
     .menu-hamburguesa.active span:nth-child(1) {
         transform: rotate(45deg) translate(6px, 6px);
     }
@@ -313,7 +302,6 @@ body {
     }
 }
 
-/* Mobile */
 @media (max-width: 480px) {
     .navbar {
         padding: 0.8rem 1rem;
@@ -342,7 +330,6 @@ body {
     }
 }
 
-/* Mobile pequeño */
 @media (max-width: 320px) {
     .navbar {
         padding: 0.6rem 0.8rem;

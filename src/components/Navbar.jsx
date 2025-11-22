@@ -25,8 +25,7 @@ export default function Navbar() {
                     <Link to="/resenias">Reseñas</Link>
                     <Link to="/login">Login</Link>
                 </div>
-
-                {/* Men'u Hamburguesa */}
+                
                 <button
                     className={`menu-hamburguesa ${menuAbierto ? 'active' : ''}`}
                     onClick={toggleMenu}
