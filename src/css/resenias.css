@@ -94,3 +94,43 @@
     box-shadow: 0 0 25px rgba(160, 32, 240, 0.8);
     letter-spacing: 2px;
 }
+
+.selector-juego {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.selector-juego label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--verde-agua);
+    font-weight: 600;
+}
+
+.selector-juego select {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(160, 32, 240, 0.3);
+    border-radius: 8px;
+    color: var(--texto);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.reseñas-list h3 {
+    text-align: center;
+    color: var(--naranja);
+    margin-bottom: 1.5rem;
+}
+
+.reseña-card h4 {
+    color: var(--verde-agua);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+option {
+    background-color: var(--violeta);
+    color: var(--texto);
+}
