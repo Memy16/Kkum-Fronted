@@ -9,7 +9,7 @@ export default function Login() {
                 <div className="auth-input">
                     <input type="email" placeholder="Email" />
                 </div>
-
+                
                 <div className="auth-input">
                     <input type="password" placeholder="Contraseña" />
                 </div>

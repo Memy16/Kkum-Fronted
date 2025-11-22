@@ -7,6 +7,7 @@ export default function Biblioteca() {
     const [juegos, setJuegos] = useState([]);
     const [juegoSeleccionado, setJuegoSeleccionado] = useState(null);
     const [loading, setLoading] = useState(true);
+    const USER_ID = "usuario-demo-123";
     
     useEffect(() => {
         const fetchJuegos = async () => {
@@ -32,6 +33,33 @@ export default function Biblioteca() {
         setJuegoSeleccionado(null);
     };
     
+    const handleAddToCollection = async (gameId) => {
+        try {
+            const response = await fetch('http://localhost:5000/api/collection', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userId: USER_ID,
+                    gameId: gameId
+                })
+            });
+
+            const result = await response.json();
+            
+            if (response.ok) {
+                alert('✅ ¡Juego añadido a tu colección!');
+                handleCloseModal();
+            } else {
+                alert('❌ Error: ' + result.error);
+            }
+        } catch (error) {
+            console.error('Error añadiendo a colección:', error);
+            alert('❌ Error de conexión');
+        }
+    };
+
     const handleCompletado = () => {
         if (juegoSeleccionado) {
             alert(`¡${juegoSeleccionado.titulo} marcado como completado!`);
@@ -77,6 +105,7 @@ export default function Biblioteca() {
                     onClose={handleCloseModal}
                     onCompletado={handleCompletado}
                     onReseña={handleReseña}
+                    onAddToCollection={() => handleAddToCollection(juegoSeleccionado._id)}
                 />
             )}
         </div>

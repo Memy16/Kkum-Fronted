@@ -71,3 +71,47 @@
     color: var(--texto);
     margin-top: 0.5rem;
 }
+
+.contador {
+    text-align: center;
+    color: var(--verde-agua);
+    margin-bottom: 2rem;
+}
+
+.coleccion-vacia {
+    text-align: center;
+    padding: 3rem;
+    color: rgba(230, 230, 230, 0.7);
+    font-size: 1.1rem;
+}
+
+.btn-eliminar {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.btn-eliminar:hover {
+    background: rgba(255, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--verde-agua);
+}
+
+.user-info {
+    text-align: center;
+    color: var(--naranja);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}

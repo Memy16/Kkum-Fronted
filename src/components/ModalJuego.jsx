@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "../css/modal-juego.css";
 
-export default function ModalJuego({ juego, onClose, onCompletado, onReseña }) {
+export default function ModalJuego({ juego, onClose, onCompletado, onReseña, onAddToCollection  }) {
     
     useEffect(() => {
         const handleEscape = (e) => {
@@ -15,7 +15,7 @@ export default function ModalJuego({ juego, onClose, onCompletado, onReseña }) 
         document.body.style.overflow = 'hidden';
         return () => document.body.style.overflow = 'unset';
     }, []);
-
+    
     return (
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -47,6 +47,13 @@ export default function ModalJuego({ juego, onClose, onCompletado, onReseña }) 
                         </div>
                         
                         <div className="modal-actions">
+                            <button 
+                                className="btn btn-collection"
+                                onClick={onAddToCollection}
+                            >
+                                <span className="btn-icon">➕</span>
+                                Añadir a Mi Colección
+                            </button>
                             <button 
                                 className="btn btn-completado"
                                 onClick={onCompletado}
